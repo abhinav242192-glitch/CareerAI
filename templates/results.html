@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<nav><a class="brand" href="{{ url_for('index') }}">Career<span>AI</span></a><a href="{{ url_for('chatbot') }}">AI Career Chat</a></nav>
+<main class="container">
+<div class="result-head">
+<div><div class="badge">Assessment complete</div><h1>Hi, {{ profile.name }} 👋</h1><p class="muted">Here are your profile-based career matches.</p></div>
+<a class="btn secondary" href="{{ url_for('assessment') }}">Retake</a>
+</div>
+
+<section class="top-result">
+<div><div class="muted">Top match</div><h2>{{ top.career_name }}</h2><p>{{ top.description }}</p><p><b>Why:</b> {{ top.reason }}</p></div>
+<div class="score">{{ top.score }}<small>% match</small></div>
+</section>
+
+<h2>Other career matches</h2>
+<div class="results-grid">
+{% for r in results %}
+<div class="card">
+<h3>{{ r.career_name }}</h3>
+<div class="bar"><span style="width:{{ r.score }}%"></span></div>
+<b>{{ r.score }}%</b><p>{{ r.description }}</p>
+</div>
+{% endfor %}
+</div>
+
+<section class="split">
+<div class="card">
+<h2>Skill Gap</h2>
+{% if gaps %}
+<ul>{% for g in gaps %}<li>{{ g.skill }} <span class="tag">{{ g.importance }}</span></li>{% endfor %}</ul>
+{% else %}<p>You selected all currently listed skills for this career.</p>{% endif %}
+</div>
+<div class="card">
+<h2>Roadmap: {{ top.career_name }}</h2>
+<ol class="roadmap">
+{% for step in roadmap %}<li><b>{{ step.title }}</b><br><span>{{ step.description }}</span></li>{% endfor %}
+</ol>
+</div>
+</section>
+<a class="btn" href="{{ url_for('chatbot') }}">Ask CareerAI →</a>
+</main>
+</body>
+</html>

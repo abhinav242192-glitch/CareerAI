@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Career Chat | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<nav><a class="brand" href="{{ url_for('index') }}">Career<span>AI</span></a><a href="{{ url_for('assessment') }}">Assessment</a></nav>
+<main class="chat-wrap">
+<h1>AI Career Chat</h1>
+<p class="muted">Ask about a career, skills or how to start.</p>
+<div id="chat" class="chat">
+<div class="msg bot">Hi! Ask me something like “How do I start AI/ML?”</div>
+</div>
+<form id="chatForm" class="chat-form">
+<input id="message" autocomplete="off" placeholder="Type your question..." required>
+<button class="btn">Send</button>
+</form>
+</main>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

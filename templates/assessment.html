@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assessment | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<nav><a class="brand" href="{{ url_for('index') }}">Career<span>AI</span></a><a href="{{ url_for('chatbot') }}">AI Career Chat</a></nav>
+<main class="container">
+<h1>Career Assessment</h1>
+<p class="muted">Answer honestly. This prototype uses your answers to calculate a matching score.</p>
+<form action="{{ url_for('submit') }}" method="post" class="form-card">
+<label>Name<input name="name" required placeholder="Your name"></label>
+<div class="two">
+<label>Branch<input name="branch" value="B.Tech CSE (AI)"></label>
+<label>Semester<select name="semester"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+</div>
+<label>Main interest
+<select name="interest">
+<option value="">Select</option><option>AI/ML</option><option>Data</option><option>Software</option><option>Web</option><option>Cybersecurity</option><option>Cloud</option><option>Design</option><option>Games</option>
+</select></label>
+<label>Preferred subject
+<select name="subject">
+<option value="">Select</option><option>Mathematics</option><option>Computer Science</option><option>Programming</option><option>Data Analysis</option><option>Networking</option><option>Design</option>
+</select></label>
+<label>Programming experience
+<select name="experience"><option>None</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+<label>Career preference (optional)<input name="career_preference" placeholder="e.g. AI/ML Engineer"></label>
+<label>Current skills <span class="muted">(select all that apply)</span></label>
+<div class="checks">
+{% for s in skills %}
+<label class="check"><input type="checkbox" name="skills" value="{{ s['skill_name'] }}">{{ s['skill_name'] }}</label>
+{% endfor %}
+</div>
+<button class="btn" type="submit">Generate Recommendations →</button>
+</form>
+</main>
+</body>
+</html>

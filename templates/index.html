@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<nav><div class="brand">Career<span>AI</span></div><a href="{{ url_for('chatbot') }}">AI Career Chat</a></nav>
+<main class="hero">
+  <section>
+    <div class="badge">B.Tech CSE (AI) Project</div>
+    <h1>Find a direction.<br><span>Build your roadmap.</span></h1>
+    <p>CareerAI analyzes your interests and current skills to suggest career paths, identify skill gaps and create a learning roadmap.</p>
+    <a class="btn" href="{{ url_for('assessment') }}">Start Assessment →</a>
+  </section>
+  <section class="feature-grid">
+    <div class="card"><b>🧠 Career Matching</b><p>Profile-based career recommendations.</p></div>
+    <div class="card"><b>📊 Skill Gap</b><p>See what skills to improve.</p></div>
+    <div class="card"><b>🛣️ Roadmap</b><p>Get a step-by-step learning path.</p></div>
+    <div class="card"><b>💬 AI Chat</b><p>Ask beginner career questions.</p></div>
+  </section>
+</main>
+<footer>CareerAI • Educational prototype</footer>
+</body>
+</html>
